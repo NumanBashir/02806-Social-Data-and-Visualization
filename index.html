@@ -3,10 +3,181 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Data Project Website</title>
+    <title>SF Crime Visualizations</title>
+    <style>
+      :root {
+        --bg: #f7f5ef;
+        --surface: #fffaf0;
+        --ink: #1f2933;
+        --muted: #52606d;
+        --accent: #006d77;
+        --accent-soft: #e6f4f1;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Georgia", "Times New Roman", serif;
+        background: radial-gradient(
+          circle at 20% 10%,
+          #fff6d1 0%,
+          var(--bg) 35%,
+          #f2efe5 100%
+        );
+        color: var(--ink);
+      }
+
+      .container {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #10313a 0%, #184e57 100%);
+        color: #f7fbfc;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(16, 49, 58, 0.22);
+      }
+
+      h1 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+      }
+
+      .subtitle {
+        margin: 0;
+        line-height: 1.6;
+        color: #d9edf0;
+      }
+
+      section {
+        margin-top: 1.6rem;
+        background: var(--surface);
+        border: 1px solid #efe8d7;
+        border-radius: 14px;
+        padding: 1.2rem;
+      }
+
+      h2 {
+        margin-top: 0;
+      }
+
+      .card-meta {
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .viz-link {
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .viz-link:hover {
+        text-decoration: underline;
+      }
+
+      img,
+      iframe {
+        width: 100%;
+        border: 0;
+        border-radius: 10px;
+        background: var(--accent-soft);
+      }
+
+      iframe {
+        height: 560px;
+      }
+
+      footer {
+        margin-top: 2rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 700px) {
+        .hero {
+          padding: 1.3rem;
+        }
+
+        iframe {
+          height: 420px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>My Data Project Website</h1>
-    <p>Welcome to our data project website!</p>
+    <main class="container">
+      <header class="hero">
+        <h1>San Francisco Crime Patterns</h1>
+        <p class="subtitle">
+          This page collects three visualizations exported from course work in
+          Weeks 1 to 6: one static matplotlib chart, one interactive Plotly
+          chart, and one interactive Folium map.
+        </p>
+      </header>
+
+      <section>
+        <h2>1. Static Matplotlib Figure</h2>
+        <p class="card-meta">
+          Yearly number of incidents from the recent SF dataset.
+        </p>
+        <a
+          class="viz-link"
+          href="images/yearly_crime_trends.png"
+          target="_blank"
+          rel="noopener"
+          >Open full-size image</a
+        >
+        <img
+          src="images/yearly_crime_trends.png"
+          alt="Yearly crime trends in San Francisco"
+        />
+      </section>
+
+      <section>
+        <h2>2. Interactive Plotly Chart</h2>
+        <p class="card-meta">
+          Historical incident counts by hour of day with hover and zoom.
+        </p>
+        <a
+          class="viz-link"
+          href="visualizations/hourly_crime_plotly.html"
+          target="_blank"
+          rel="noopener"
+          >Open Plotly page</a
+        >
+        <iframe
+          src="visualizations/hourly_crime_plotly.html"
+          title="Plotly hourly crime chart"
+        ></iframe>
+      </section>
+
+      <section>
+        <h2>3. Interactive Folium Map</h2>
+        <p class="card-meta">
+          Heatmap of crime coordinates with pan and zoom controls.
+        </p>
+        <a
+          class="viz-link"
+          href="visualizations/sf_crime_heatmap_folium.html"
+          target="_blank"
+          rel="noopener"
+          >Open Folium map</a
+        >
+        <iframe
+          src="visualizations/sf_crime_heatmap_folium.html"
+          title="Folium SF crime heatmap"
+        ></iframe>
+      </section>
+
+      <footer>
+        Built for 02806 Social Data and Visualization. Exported locally and
+        ready for GitHub Pages.
+      </footer>
+    </main>
   </body>
 </html>
