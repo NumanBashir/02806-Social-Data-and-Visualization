@@ -2,12 +2,6 @@
 *.csv
 *.CSV
 
-# Generated plots
-*.png
-*.jpg
-*.jpeg
-*.pdf
-
 # Jupyter Notebook
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
