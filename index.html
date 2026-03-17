@@ -3,181 +3,305 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SF Crime Visualizations</title>
+    <title>SF Crime Visual Atlas</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap");
+
       :root {
-        --bg: #f7f5ef;
-        --surface: #fffaf0;
-        --ink: #1f2933;
-        --muted: #52606d;
-        --accent: #006d77;
-        --accent-soft: #e6f4f1;
+        --bg: #0a1018;
+        --bg-soft: #121b27;
+        --surface: #172230;
+        --surface-2: #1d2a3b;
+        --ink: #edf4ff;
+        --muted: #93a6bf;
+        --accent: #2ec4b6;
+        --line: #25364b;
       }
 
       body {
         margin: 0;
-        font-family: "Georgia", "Times New Roman", serif;
-        background: radial-gradient(
-          circle at 20% 10%,
-          #fff6d1 0%,
-          var(--bg) 35%,
-          #f2efe5 100%
-        );
+        font-family: "Manrope", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 0% 0%, #17263a 0%, rgba(23, 38, 58, 0) 55%),
+          radial-gradient(
+            circle at 100% 20%,
+            #2a1535 0%,
+            rgba(42, 21, 53, 0) 50%
+          ),
+          var(--bg);
         color: var(--ink);
       }
 
-      .container {
-        max-width: 1050px;
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(8px);
+        background: rgba(10, 16, 24, 0.8);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar-inner {
+        max-width: 1120px;
         margin: 0 auto;
-        padding: 2rem 1rem 4rem;
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        font-size: 0.92rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .topnav {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .topnav a {
+        color: var(--ink);
+        text-decoration: none;
+        padding: 0.45rem 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.9rem;
+      }
+
+      .topnav a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 1.2rem 1rem 4rem;
       }
 
       .hero {
-        background: linear-gradient(135deg, #10313a 0%, #184e57 100%);
-        color: #f7fbfc;
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(16, 49, 58, 0.22);
+        background: linear-gradient(135deg, #112033 0%, #1a334d 100%);
+        border: 1px solid #28405a;
+        border-radius: 20px;
+        padding: 2.35rem;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
       }
 
       h1 {
-        margin: 0 0 0.75rem;
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        margin: 0;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2.1rem, 5vw, 3.5rem);
+        letter-spacing: 0.01em;
+        line-height: 1.05;
       }
 
       .subtitle {
-        margin: 0;
-        line-height: 1.6;
-        color: #d9edf0;
+        margin: 1rem 0 0;
+        max-width: 70ch;
+        line-height: 1.7;
+        font-size: 1.05rem;
+        color: #d5e4fb;
       }
 
-      section {
+      .grid {
         margin-top: 1.6rem;
-        background: var(--surface);
-        border: 1px solid #efe8d7;
-        border-radius: 14px;
-        padding: 1.2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .card {
+        background: linear-gradient(
+          180deg,
+          var(--surface) 0%,
+          var(--surface-2) 100%
+        );
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.15rem;
+      }
+
+      .card.wide {
+        grid-column: span 2;
+      }
+
+      .tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.6rem;
+        border: 1px solid rgba(46, 196, 182, 0.35);
+        border-radius: 999px;
+        padding: 0.2rem 0.55rem;
       }
 
       h2 {
-        margin-top: 0;
+        margin: 0.08rem 0 0;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.45rem;
+        line-height: 1.2;
       }
 
-      .card-meta {
+      .meta {
+        margin: 0.55rem 0 0.95rem;
         color: var(--muted);
-        margin-bottom: 1rem;
+        line-height: 1.65;
+        font-size: 0.98rem;
       }
 
       .viz-link {
         display: inline-block;
-        margin-bottom: 1rem;
-        color: var(--accent);
-        font-weight: 700;
         text-decoration: none;
+        background: var(--accent);
+        color: #052421;
+        padding: 0.5rem 0.82rem;
+        border-radius: 10px;
+        font-weight: 700;
       }
 
       .viz-link:hover {
-        text-decoration: underline;
+        filter: brightness(1.05);
       }
 
       img,
       iframe {
         width: 100%;
-        border: 0;
-        border-radius: 10px;
-        background: var(--accent-soft);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-top: 0.9rem;
+        background: var(--bg-soft);
       }
 
       iframe {
-        height: 560px;
+        min-height: 540px;
       }
 
       footer {
-        margin-top: 2rem;
+        margin-top: 1.35rem;
+        text-align: center;
         color: var(--muted);
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
-      @media (max-width: 700px) {
-        .hero {
-          padding: 1.3rem;
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card.wide {
+          grid-column: span 1;
         }
 
         iframe {
-          height: 420px;
+          min-height: 420px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 1.25rem;
+        }
+
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
     </style>
   </head>
   <body>
-    <main class="container">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">SF Crime Visual Atlas</div>
+        <nav class="topnav">
+          <a href="#matplotlib">Matplotlib</a>
+          <a href="#plotly">Plotly</a>
+          <a href="#folium">Folium</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="page">
       <header class="hero">
-        <h1>San Francisco Crime Patterns</h1>
+        <h1>San Francisco Crime Patterns, 2003 to Present</h1>
         <p class="subtitle">
-          This page collects three visualizations exported from course work in
-          Weeks 1 to 6: one static matplotlib chart, one interactive Plotly
-          chart, and one interactive Folium map.
+          A one-page collection of our course visualizations in a single
+          consistent layout. The page combines one static figure and two
+          interactive graphics so visitors can both scan trends quickly and
+          explore details with hover, zoom, and map navigation.
         </p>
       </header>
 
-      <section>
-        <h2>1. Static Matplotlib Figure</h2>
-        <p class="card-meta">
-          Yearly number of incidents from the recent SF dataset.
-        </p>
-        <a
-          class="viz-link"
-          href="images/yearly_crime_trends.png"
-          target="_blank"
-          rel="noopener"
-          >Open full-size image</a
-        >
-        <img
-          src="images/yearly_crime_trends.png"
-          alt="Yearly crime trends in San Francisco"
-        />
+      <section class="grid">
+        <article class="card" id="matplotlib">
+          <div class="tag">Static Figure</div>
+          <h2>1. Yearly Incidents (Matplotlib)</h2>
+          <p class="meta">
+            A compact overview of annual incident volume from the recent
+            dataset.
+          </p>
+          <a
+            class="viz-link"
+            href="images/yearly_crime_trends.png"
+            target="_blank"
+            rel="noopener"
+            >Open full-size image</a
+          >
+          <img
+            src="images/yearly_crime_trends.png"
+            alt="Yearly crime trends in San Francisco"
+          />
+        </article>
+
+        <article class="card wide" id="plotly">
+          <div class="tag">Interactive Chart</div>
+          <h2>2. Incidents by Hour (Plotly)</h2>
+          <p class="meta">
+            Hover for values, zoom into specific time ranges, and inspect the
+            distribution over the day.
+          </p>
+          <a
+            class="viz-link"
+            href="visualizations/hourly_crime_plotly.html"
+            target="_blank"
+            rel="noopener"
+            >Open Plotly page</a
+          >
+          <iframe
+            src="visualizations/hourly_crime_plotly.html"
+            title="Plotly hourly crime chart"
+          ></iframe>
+        </article>
+
+        <article class="card wide" id="folium">
+          <div class="tag">Interactive Map</div>
+          <h2>3. Spatial Hotspots (Folium)</h2>
+          <p class="meta">
+            Pan and zoom to inspect where incidents cluster geographically
+            across San Francisco.
+          </p>
+          <a
+            class="viz-link"
+            href="visualizations/sf_crime_heatmap_folium.html"
+            target="_blank"
+            rel="noopener"
+            >Open Folium map</a
+          >
+          <iframe
+            src="visualizations/sf_crime_heatmap_folium.html"
+            title="Folium SF crime heatmap"
+          ></iframe>
+        </article>
       </section>
 
-      <section>
-        <h2>2. Interactive Plotly Chart</h2>
-        <p class="card-meta">
-          Historical incident counts by hour of day with hover and zoom.
-        </p>
-        <a
-          class="viz-link"
-          href="visualizations/hourly_crime_plotly.html"
-          target="_blank"
-          rel="noopener"
-          >Open Plotly page</a
-        >
-        <iframe
-          src="visualizations/hourly_crime_plotly.html"
-          title="Plotly hourly crime chart"
-        ></iframe>
-      </section>
-
-      <section>
-        <h2>3. Interactive Folium Map</h2>
-        <p class="card-meta">
-          Heatmap of crime coordinates with pan and zoom controls.
-        </p>
-        <a
-          class="viz-link"
-          href="visualizations/sf_crime_heatmap_folium.html"
-          target="_blank"
-          rel="noopener"
-          >Open Folium map</a
-        >
-        <iframe
-          src="visualizations/sf_crime_heatmap_folium.html"
-          title="Folium SF crime heatmap"
-        ></iframe>
-      </section>
-
-      <footer>
-        Built for 02806 Social Data and Visualization. Exported locally and
-        ready for GitHub Pages.
-      </footer>
+      <footer>Built for 02806 Social Data and Visualization.</footer>
     </main>
   </body>
 </html>
