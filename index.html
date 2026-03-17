@@ -18,6 +18,21 @@
         --line: #25364b;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body.light-mode {
+        --bg: #f5f6fa;
+        --bg-soft: #ffffff;
+        --surface: #ffffff;
+        --surface-2: #f8fbff;
+        --ink: #1b2838;
+        --muted: #576b83;
+        --accent: #0e9e91;
+        --line: #d8e2ee;
+      }
+
       body {
         margin: 0;
         font-family: "Manrope", "Segoe UI", sans-serif;
@@ -62,6 +77,7 @@
         display: flex;
         gap: 0.75rem;
         flex-wrap: wrap;
+        align-items: center;
       }
 
       .topnav a {
@@ -78,6 +94,22 @@
         color: var(--accent);
       }
 
+      .toggle {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+        padding: 0.45rem 0.8rem;
+        font: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
       .page {
         max-width: 1120px;
         margin: 0 auto;
@@ -90,6 +122,13 @@
         border-radius: 20px;
         padding: 2.35rem;
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        animation: rise-in 520ms ease-out both;
+      }
+
+      body.light-mode .hero {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e8f2ff 100%);
+        border-color: #cfe0f2;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
       }
 
       h1 {
@@ -108,6 +147,10 @@
         color: #d5e4fb;
       }
 
+      body.light-mode .subtitle {
+        color: #2d4560;
+      }
+
       .grid {
         margin-top: 1.6rem;
         display: grid;
@@ -124,6 +167,16 @@
         border: 1px solid var(--line);
         border-radius: 16px;
         padding: 1.15rem;
+        transition:
+          transform 220ms ease,
+          box-shadow 220ms ease,
+          border-color 220ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(46, 196, 182, 0.45);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
       }
 
       .card.wide {
@@ -164,10 +217,14 @@
         padding: 0.5rem 0.82rem;
         border-radius: 10px;
         font-weight: 700;
+        transition:
+          transform 180ms ease,
+          filter 180ms ease;
       }
 
       .viz-link:hover {
         filter: brightness(1.05);
+        transform: translateY(-1px);
       }
 
       img,
@@ -184,10 +241,24 @@
       }
 
       footer {
-        margin-top: 1.35rem;
+        margin-top: 1.55rem;
         text-align: center;
         color: var(--muted);
         font-size: 0.9rem;
+        line-height: 1.6;
+        border-top: 1px solid var(--line);
+        padding-top: 1rem;
+      }
+
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       @media (max-width: 900px) {
@@ -213,6 +284,16 @@
           align-items: flex-start;
           flex-direction: column;
         }
+
+        .topnav {
+          width: 100%;
+        }
+
+        .topnav a,
+        .toggle {
+          flex: 1 1 auto;
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -224,6 +305,9 @@
           <a href="#matplotlib">Matplotlib</a>
           <a href="#plotly">Plotly</a>
           <a href="#folium">Folium</a>
+          <button class="toggle" id="themeToggle" type="button">
+            Toggle Theme
+          </button>
         </nav>
       </div>
     </div>
@@ -301,7 +385,17 @@
         </article>
       </section>
 
-      <footer>Built for 02806 Social Data and Visualization.</footer>
+      <footer>
+        Built for 02806 Social Data and Visualization.<br />
+        This front page links to all exported visualizations from Weeks 1 to 6.
+      </footer>
     </main>
+
+    <script>
+      const btn = document.getElementById("themeToggle");
+      btn.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+      });
+    </script>
   </body>
 </html>
