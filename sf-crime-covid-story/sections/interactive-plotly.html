@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Crime Visualization</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <h1>Interactive Crime Patterns During COVID-19</h1>
+    <p>This interactive visualization allows you to explore the changes in crime patterns in San Francisco during the COVID-19 pandemic. Use the controls to filter by crime type and time period to see how different factors influenced crime rates.</p>
+    
+    <div id="plotly-visualization"></div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Load the data and create the interactive Plotly visualization
+        d3.csv("../data/sf_crime_data.csv").then(function(data) {
+            // Process the data and create the visualization
+            const filteredData = data.filter(d => d['Incident Date'] >= '2020-03-01' && d['Incident Date'] <= '2021-12-31');
+            const crimeTypes = [...new Set(filteredData.map(d => d['Crime Category']))];
+
+            const traces = crimeTypes.map(crime => {
+                const crimeData = filteredData.filter(d => d['Crime Category'] === crime);
+                return {
+                    x: crimeData.map(d => d['Incident Date']),
+                    y: crimeData.map(d => d['Incident Count']),
+                    mode: 'lines+markers',
+                    name: crime
+                };
+            });
+
+            const layout = {
+                title: 'Crime Patterns in San Francisco During COVID-19',
+                xaxis: { title: 'Date' },
+                yaxis: { title: 'Number of Incidents' },
+                hovermode: 'closest'
+            };
+
+            Plotly.newPlot('plotly-visualization', traces, layout);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+:root {
+    --bg: #f3ede4;
+    --paper: #fbf7f1;
+    --ink: #1f2a33;
+    --muted: #5b6570;
+    --accent: #c65d3f;
+    --accent-dark: #8f2d21;
+    --teal: #12756b;
+    --gold: #d8a047;
+    --line: rgba(31, 42, 51, 0.12);
+    --shadow: 0 24px 70px rgba(42, 48, 56, 0.12);
+    --hero-width: min(1100px, calc(100vw - 2rem));
+    --content-width: min(760px, calc(100vw - 2rem));
+    --figure-width: min(1180px, calc(100vw - 2rem));
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Source Sans 3", sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at top left, rgba(214, 160, 71, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(18, 117, 107, 0.12), transparent 25%),
+        linear-gradient(180deg, #f7f1e7 0%, var(--bg) 100%);
+    line-height: 1.65;
+}
+
+.page-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.45), transparent 38%),
+        radial-gradient(circle at 10% 30%, rgba(198, 93, 63, 0.08), transparent 22%);
+}
+
+img,
+iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+}
+
+a {
+    color: var(--accent-dark);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+}
+
+.hero {
+    position: relative;
+    width: var(--hero-width);
+    margin: 0 auto;
+    padding: 5rem 0 2.5rem;
+}
+
+.eyebrow,
+.section-label {
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.hero h1,
+.text-panel h2 {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+}
+
+.hero h1 {
+    max-width: 11ch;
+    font-size: clamp(3.2rem, 9vw, 6.8rem);
+}
+
+.deck {
+    max-width: 62ch;
+    margin: 1.5rem 0 0;
+    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    color: #32404c;
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+.hero-meta span {
+    padding: 0.45rem 0.8rem;
+    border: 1px solid rgba(31, 42, 51, 0.12);
+    border-radius: 999px;
+    background: rgba(251, 247, 241, 0.72);
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.story {
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+.prose,
+.references {
+    width: var(--content-width);
+    margin: 0 auto;
+    padding: 1.25rem 0 2rem;
+}
+
+.prose p,
+.text-panel p,
+.references li {
+    font-size: 1.12rem;
+}
+
+.figure-block {
+    width: var(--figure-width);
+    margin: 1rem auto 3.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.text-panel {
+    padding: 1.25rem 0.5rem 0 0;
+}
+
+.text-panel h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.media-card {
+    margin: 0;
+    padding: 1.1rem;
+    border: 1px solid rgba(31, 42, 51, 0.08);
+    border-radius: 24px;
+    background: rgba(251, 247, 241, 0.84);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+}
+
+.media-card img {
+    border-radius: 16px;
+    background: var(--paper);
+}
+
+.media-card iframe {
+    min-height: 700px;
+    border-radius: 16px;
+    background: var(--paper);
+}
+
+.wide-card {
+    padding: 1rem;
+}
+
+figcaption {
+    margin-top: 0.95rem;
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+figcaption span {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.closing {
+    padding-top: 0;
+}
+
+.references ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.references li + li {
+    margin-top: 0.85rem;
+}
+
+.story-block {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.story-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 980px) {
+    .figure-block {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .text-panel {
+        padding: 0;
+    }
+
+    .media-card iframe {
+        min-height: 560px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding-top: 3.5rem;
+    }
+
+    .hero-meta {
+        gap: 0.5rem;
+    }
+
+    .hero-meta span {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .prose p,
+    .text-panel p,
+    .references li {
+        font-size: 1.03rem;
+    }
+
+    .media-card {
+        padding: 0.75rem;
+        border-radius: 18px;
+    }
+
+    .media-card iframe {
+        min-height: 460px;
+    }
+}
