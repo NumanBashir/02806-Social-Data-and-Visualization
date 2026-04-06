@@ -1,139 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>When San Francisco Went Quiet</title>
-    <meta name="description" content="A short data story about how San Francisco police incident reports shifted across time, space, and offense type during the first pandemic year.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="A short data story about how San Francisco police incident reports shifted across time, space, and offense type during the first pandemic year."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
     <div class="page-glow"></div>
 
     <header class="hero story-block">
-        <p class="eyebrow">SF Crime Data Story</p>
-        <h1>When San Francisco Went Quiet, crime reports moved with it</h1>
-        <p class="deck">
-            In spring 2020, San Francisco's reported incidents did not just decline. They dropped hardest in the districts built around commuting and nightlife, while property-related offenses became more prominent in the neighborhoods where daily life shifted.
-        </p>
-        <div class="hero-meta">
-            <span>Dataset: SFPD incident reports</span>
-            <span>Period used here: January 2019 to December 2021</span>
-            <span>Focus window: March 17 to August 31, 2019 vs. 2020</span>
-        </div>
+      <p class="eyebrow">SF Crime Data Story</p>
+      <h1>When San Francisco Went Quiet, crime reports moved with it</h1>
+      <p class="deck">
+        In spring 2020, San Francisco's reported incidents did not just decline.
+        They dropped hardest in the districts built around commuting and
+        nightlife, while property-related offenses became more prominent in the
+        neighborhoods where daily life shifted.
+      </p>
+      <div class="hero-meta">
+        <span>Dataset: SFPD incident reports</span>
+        <span>Period used here: January 2019 to December 2021</span>
+        <span>Focus window: March 17 to August 31, 2019 vs. 2020</span>
+      </div>
+      <div class="author-byline">
+        <span class="byline-label">By Group 41</span>
+        <span class="byline-names"
+          >s204465 Muhammad Numan Bashir · s205835 Vaneeza Fatima Butt</span
+        >
+      </div>
     </header>
 
     <main class="story">
-        <section class="prose story-block">
-            <p class="section-label">Setup</p>
-            <p>
-                This story uses San Francisco Police Department incident reports, the same public dataset used throughout the course. Each row is a reported incident with a timestamp, category, police district, and location. For this piece I use 382,616 records from January 1, 2019 through December 31, 2021 to compare the city before and during the first pandemic shock.
-            </p>
-            <p>
-                One important caveat matters from the start: these are <em>reported incidents</em>, not a direct census of harm or criminal behavior. Reporting patterns, police activity, and changed routines all shape what ends up in the data. So the story below is about how the city's official incident record changed, not a claim that every underlying behavior changed in exactly the same way.
-            </p>
-        </section>
+      <section class="prose story-block">
+        <p class="section-label">Setup</p>
+        <p>
+          This story uses San Francisco Police Department incident reports, the
+          same public dataset used throughout the course. Each row is a reported
+          incident with a timestamp, category, police district, and location.
+          For this piece I use 382,616 records from January 1, 2019 through
+          December 31, 2021 to compare the city before and during the first
+          pandemic shock.
+        </p>
+        <p>
+          One important caveat matters from the start: these are
+          <em>reported incidents</em>, not a direct census of harm or criminal
+          behavior. Reporting patterns, police activity, and changed routines
+          all shape what ends up in the data. So the story below is about how
+          the city's official incident record changed, not a claim that every
+          underlying behavior changed in exactly the same way.
+        </p>
+      </section>
 
-        <section class="figure-block story-block">
-            <div class="text-panel">
-                <p class="section-label">1. The Break</p>
-                <h2>The collapse was immediate</h2>
-                <p>
-                    The sharpest visual break in the whole series comes right after the Bay Area shelter-in-place order took effect on March 17, 2020. Incident reports fell to their lowest point in April 2020 and stayed below 2019 levels for the rest of the year.
-                </p>
-                <p>
-                    That does not mean “crime disappeared.” It means the city changed all at once: fewer commuters, fewer tourists, fewer crowded commercial streets, and fewer everyday interactions that typically generate reports.
-                </p>
-            </div>
-            <figure class="media-card">
-                <img src="visualizations/static-chart/monthly-crime-trend.png" alt="Monthly SFPD incident reports from January 2019 to December 2021, with a sharp drop after the March 17, 2020 stay-home order.">
-                <figcaption>
-                    <span>Figure 1.</span> Monthly incident reports in San Francisco. The clearest break arrives immediately after the March 17, 2020 stay-home order. April 2020 is the series low point, showing how strongly the city's official incident record reacted to the shutdown.
-                </figcaption>
-            </figure>
-        </section>
+      <section class="figure-block story-block">
+        <div class="text-panel">
+          <p class="section-label">1. The Break</p>
+          <h2>The collapse was immediate</h2>
+          <p>
+            The sharpest visual break in the whole series comes right after the
+            Bay Area shelter-in-place order took effect on March 17, 2020.
+            Incident reports fell to their lowest point in April 2020 and stayed
+            below 2019 levels for the rest of the year.
+          </p>
+          <p>
+            That does not mean “crime disappeared.” It means the city changed
+            all at once: fewer commuters, fewer tourists, fewer crowded
+            commercial streets, and fewer everyday interactions that typically
+            generate reports.
+          </p>
+        </div>
+        <figure class="media-card">
+          <img
+            src="visualizations/static-chart/monthly-crime-trend.png"
+            alt="Monthly SFPD incident reports from January 2019 to December 2021, with a sharp drop after the March 17, 2020 stay-home order."
+          />
+          <figcaption>
+            <span>Figure 1.</span> Monthly incident reports in San Francisco.
+            The clearest break arrives immediately after the March 17, 2020
+            stay-home order. April 2020 is the series low point, showing how
+            strongly the city's official incident record reacted to the
+            shutdown.
+          </figcaption>
+        </figure>
+      </section>
 
-        <section class="prose story-block">
-            <p>
-                The citywide drop was large, but it was not evenly distributed. If the pandemic mostly changed how people moved through the city, then the biggest declines should appear in places that depended on office workers, shopping, nightlife, and transit traffic. That is exactly what the map shows.
-            </p>
-        </section>
+      <section class="prose story-block">
+        <p>
+          The citywide drop was large, but it was not evenly distributed. If the
+          pandemic mostly changed how people moved through the city, then the
+          biggest declines should appear in places that depended on office
+          workers, shopping, nightlife, and transit traffic. That is exactly
+          what the map shows.
+        </p>
+      </section>
 
-        <section class="figure-block story-block">
-            <div class="text-panel">
-                <p class="section-label">2. The Geography</p>
-                <h2>Downtown changed more than residential districts</h2>
-                <p>
-                    The strongest decline appears in <strong>Central</strong>, where reported incidents fell by about half compared with the same March-to-August window in 2019. Tenderloin, Mission, and Southern also dropped sharply. By contrast, Bayview and Ingleside changed much less.
-                </p>
-                <p>
-                    The broad pattern is a spatial version of lockdown: the districts most tied to downtown activity lost the most reported incidents, while more residential parts of the city stayed comparatively steady.
-                </p>
-            </div>
-            <figure class="media-card wide-card">
-                <iframe
-                    src="visualizations/map/district-pandemic-shift.html"
-                    title="Police-district choropleth showing percent change in incident reports from March-August 2019 to March-August 2020."
-                    loading="lazy">
-                </iframe>
-                <figcaption>
-                    <span>Figure 2.</span> Percent change in incident reports by police district, comparing March 17 to August 31, 2020 with the same period in 2019. Central shows the steepest decline, while Ingleside and Bayview remain much closer to their pre-pandemic volume.
-                </figcaption>
-            </figure>
-        </section>
+      <section class="figure-block story-block">
+        <div class="text-panel">
+          <p class="section-label">2. The Geography</p>
+          <h2>Downtown changed more than residential districts</h2>
+          <p>
+            The strongest decline appears in <strong>Central</strong>, where
+            reported incidents fell by about half compared with the same
+            March-to-August window in 2019. Tenderloin, Mission, and Southern
+            also dropped sharply. By contrast, Bayview and Ingleside changed
+            much less.
+          </p>
+          <p>
+            The broad pattern is a spatial version of lockdown: the districts
+            most tied to downtown activity lost the most reported incidents,
+            while more residential parts of the city stayed comparatively
+            steady.
+          </p>
+        </div>
+        <figure class="media-card wide-card">
+          <iframe
+            src="visualizations/map/district-pandemic-shift.html"
+            title="Police-district choropleth showing percent change in incident reports from March-August 2019 to March-August 2020."
+            loading="lazy"
+          >
+          </iframe>
+          <figcaption>
+            <span>Figure 2.</span> Percent change in incident reports by police
+            district, comparing March 17 to August 31, 2020 with the same period
+            in 2019. Central shows the steepest decline, while Ingleside and
+            Bayview remain much closer to their pre-pandemic volume.
+          </figcaption>
+        </figure>
+      </section>
 
-        <section class="prose story-block">
-            <p>
-                A quieter downtown was only part of the story. The mix of incidents also changed. Categories that depend on people carrying property through public space, like larceny theft and lost property, fell hard. Meanwhile burglary and motor vehicle theft rose in many districts, suggesting that the pandemic changed not just <em>where</em> incidents were reported, but also <em>which kinds</em> dominated the record.
-            </p>
-        </section>
+      <section class="prose story-block">
+        <p>
+          A quieter downtown was only part of the story. The mix of incidents
+          also changed. Categories that depend on people carrying property
+          through public space, like larceny theft and lost property, fell hard.
+          Meanwhile burglary and motor vehicle theft rose in many districts,
+          suggesting that the pandemic changed not just <em>where</em> incidents
+          were reported, but also <em>which kinds</em> dominated the record.
+        </p>
+      </section>
 
-        <section class="figure-block story-block">
-            <div class="text-panel">
-                <p class="section-label">3. The Mix</p>
-                <h2>Property crime did not move in one direction</h2>
-                <p>
-                    Use the buttons to switch between percent change, net change, and 2020 incident counts. The heatmap makes two patterns easy to spot: larceny and lost-property reports drop across almost every district, while burglary and motor vehicle theft turn positive in much of the city.
-                </p>
-                <p>
-                    This is the most important nuance in the story. The pandemic lowered overall incident volume, but it did not create a uniform decline across offense types.
-                </p>
-            </div>
-            <figure class="media-card wide-card">
-                <iframe
-                    src="visualizations/interactive/category-shift-heatmap.html"
-                    title="Interactive heatmap of offense category changes by police district between spring-summer 2019 and spring-summer 2020."
-                    loading="lazy">
-                </iframe>
-                <figcaption>
-                    <span>Figure 3.</span> Category-by-district shifts during the first pandemic spring and summer. Negative values cluster around larceny theft, lost property, and warrants, while burglary and motor vehicle theft increase in several districts.
-                </figcaption>
-            </figure>
-        </section>
+      <section class="figure-block story-block">
+        <div class="text-panel">
+          <p class="section-label">3. The Mix</p>
+          <h2>Property crime did not move in one direction</h2>
+          <p>
+            Use the buttons to switch between percent change, net change, and
+            2020 incident counts. The heatmap makes two patterns easy to spot:
+            larceny and lost-property reports drop across almost every district,
+            while burglary and motor vehicle theft turn positive in much of the
+            city.
+          </p>
+          <p>
+            This is the most important nuance in the story. The pandemic lowered
+            overall incident volume, but it did not create a uniform decline
+            across offense types.
+          </p>
+        </div>
+        <figure class="media-card wide-card">
+          <iframe
+            src="visualizations/interactive/category-shift-heatmap.html"
+            title="Interactive heatmap of offense category changes by police district between spring-summer 2019 and spring-summer 2020."
+            loading="lazy"
+          >
+          </iframe>
+          <figcaption>
+            <span>Figure 3.</span> Category-by-district shifts during the first
+            pandemic spring and summer. Negative values cluster around larceny
+            theft, lost property, and warrants, while burglary and motor vehicle
+            theft increase in several districts.
+          </figcaption>
+        </figure>
+      </section>
 
-        <section class="prose story-block closing">
-            <p class="section-label">Takeaway</p>
-            <p>
-                The simplest reading of the pandemic is that San Francisco got safer because incident reports went down. The data here supports a narrower and more honest claim: the city's incident record was reorganized by a sudden change in mobility, work, and public life. Downtown emptied out, residential patterns mattered more, and some property-related categories rose even while the total fell.
-            </p>
-            <p>
-                That is why this dataset should be read carefully. A drop in reports can reflect fewer opportunities, less foot traffic, or different policing and reporting patterns. Good data stories do not hide that ambiguity; they make it part of the interpretation.
-            </p>
-        </section>
+      <section class="prose story-block closing">
+        <p class="section-label">Takeaway</p>
+        <p>
+          The simplest reading of the pandemic is that San Francisco got safer
+          because incident reports went down. The data here supports a narrower
+          and more honest claim: the city's incident record was reorganized by a
+          sudden change in mobility, work, and public life. Downtown emptied
+          out, residential patterns mattered more, and some property-related
+          categories rose even while the total fell.
+        </p>
+        <p>
+          That is why this dataset should be read carefully. A drop in reports
+          can reflect fewer opportunities, less foot traffic, or different
+          policing and reporting patterns. Good data stories do not hide that
+          ambiguity; they make it part of the interpretation.
+        </p>
+      </section>
 
-        <section class="references story-block">
-            <p class="section-label">References</p>
-            <ul>
-                <li><a href="https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Presen/wg3w-h783" target="_blank" rel="noreferrer">San Francisco Police Department Incident Reports: 2018 to Present</a>. Source dataset used for the analysis.</li>
-                <li><a href="https://www.sf.gov/news--changes-when-applying-sf-affordable-housing-due-covid-19" target="_blank" rel="noreferrer">SF.gov, March 18, 2020</a>. Example city guidance issued immediately after the shelter-in-place order, documenting the shift to closed in-person services.</li>
-                <li><a href="https://www.bart.gov/news/articles/2020/news20200625" target="_blank" rel="noreferrer">BART FY21 budget announcement, June 25, 2020</a>. Notes the ridership collapse caused by shelter-in-place orders, consistent with the strong decline in downtown incident activity.</li>
-            </ul>
-        </section>
+      <section class="references story-block">
+        <p class="section-label">References</p>
+        <ul>
+          <li>
+            <a
+              href="https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Presen/wg3w-h783"
+              target="_blank"
+              rel="noreferrer"
+              >San Francisco Police Department Incident Reports: 2018 to
+              Present</a
+            >. Source dataset used for the analysis.
+          </li>
+          <li>
+            <a
+              href="https://www.sf.gov/news--changes-when-applying-sf-affordable-housing-due-covid-19"
+              target="_blank"
+              rel="noreferrer"
+              >SF.gov, March 18, 2020</a
+            >. Example city guidance issued immediately after the
+            shelter-in-place order, documenting the shift to closed in-person
+            services.
+          </li>
+          <li>
+            <a
+              href="https://www.bart.gov/news/articles/2020/news20200625"
+              target="_blank"
+              rel="noreferrer"
+              >BART FY21 budget announcement, June 25, 2020</a
+            >. Notes the ridership collapse caused by shelter-in-place orders,
+            consistent with the strong decline in downtown incident activity.
+          </li>
+        </ul>
+      </section>
     </main>
 
     <script src="scripts/main.js"></script>
-</body>
+  </body>
 </html>
